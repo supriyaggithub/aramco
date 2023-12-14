@@ -1,0 +1,414 @@
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="./css/css.css">
+
+    
+    <title>LTIMindtree</title>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.3/aframe/build/aframe-ar.js"></script> -->
+    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script> -->
+    <!-- <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script> -->
+    <!-- <script src="https://rawgit.com/mayognaise/aframe-gif-component/master/dist/aframe-gif-component.min.js"></script> -->
+</head>
+
+<script>
+
+    AFRAME.registerComponent('clickplane', {
+
+init: function() {
+
+  const {el} = this
+
+
+  let slideNum=1
+  var scene1 = document.getElementById('sky1')
+  var playbuttons1 = document.getElementById('videoControls')
+  var videopalne = document.getElementById('vid')
+  var telep = document.getElementById('torus')
+  var portalsphere = document.getElementById('teabag')
+  var text = document.getElementById('text')
+
+
+
+
+
+  el.addEventListener('click', () => {
+
+   scene1.setAttribute("visible", true)
+   playbuttons1.setAttribute("visible", true)
+   videopalne.setAttribute("visible", true)
+   telep.setAttribute("visible", true)
+   portalsphere.setAttribute("visible", false)
+   text.setAttribute("visible", false)
+
+
+
+
+
+
+
+  })
+
+},
+
+})
+
+
+    AFRAME.registerComponent('clickhandler', {
+        // dependencies: ['raycaster'],
+
+        init: function () {
+            var videoel = document.getElementById('video')
+            var videoControls = document.getElementById('videoControls')
+            var Backgroundmusic = document.getElementById('backgroundmusic')
+
+            this.el.addEventListener('click', playpause);
+            function playpause() {
+                if (videoel.paused) {
+                    videoel.play();
+                    Backgroundmusic.setAttribute("volume", 0);
+                    // videoControls.setAttribute('src', '#pause')
+                    videoControls.setAttribute('opacity', 0)
+                    //    document.getElementById('videoControls').style.opacity=0;
+                } else {
+                    videoel.pause();
+                    Backgroundmusic.setAttribute("volume", 2);
+
+                    // videoControls.setAttribute('src', '#play')
+
+                }
+            }
+            // function teleportredirect(){
+            //     if(teleportid.clicked){
+            //     window.location.href="https://avatartraining.mindtree.com/product-model-view/ModelAFrame.html";
+            //     }
+            // }
+        }
+    });
+
+
+    AFRAME.registerComponent('arrowhandler', {
+        init: function () {
+            var videotag = document.getElementById('video')
+            var Backgroundmusiccontrol = document.getElementById('backgroundmusic')
+
+            var teleport = document.getElementById('torus')
+            var sky = document.getElementById('sky1')
+            var videotex = document.getElementById('vid')
+            var playbutton = document.getElementById('videoControls')
+            var slidewall = document.getElementById('SlideWall')
+            var slideplain = document.getElementById('slideplain')
+
+            var portalspheres2 = document.getElementById('teabag')
+            var text = document.getElementById('text')
+            var camera1 = document.getElementById('camera1')
+            var bigtorus = document.getElementById('torusdisplay')
+
+
+
+            // var guidearrow = document.getElementById('guidearrow')
+
+
+
+
+
+
+            this.el.addEventListener('click', teleportredirect);
+            function teleportredirect() {
+                // window.location.href = "https://avatartraining.mindtree.com/product-model-view/ModelAFrame.html";
+           
+                // sky.setAttribute("opacity","0.85")
+
+                // setTimeout(showmodeldelay, 4000)
+       
+                sky.setAttribute("src","#sky2")
+                
+                // camera1.setAttribute("animation", "property: rotation")
+                // camera1.setAttribute("animation", "from: 0 0 0")
+
+                // camera1.setAttribute("animation", "to: 0 -90 0")
+                // camera1.setAttribute("animation", "dur: 5000")
+
+
+
+
+           sky.setAttribute("rotation","0 120 0")
+           videotag.pause();
+           Backgroundmusiccontrol.setAttribute("volume", 2);
+
+        
+           teleport.setAttribute("visible", false)
+           videotex.setAttribute("visible", false)
+           playbutton.setAttribute("visible", false)
+        videotex.setAttribute("position","-35 108 -110")
+        videotex.setAttribute("scale","0.03 0.03 0")
+        playbutton.setAttribute("position","-35 38 -110")
+        playbutton.setAttribute("scale","2 2 0")
+        bigtorus.setAttribute("position","35 110 -110")
+        bigtorus.setAttribute("radius-tubular","0.3")
+        bigtorus.setAttribute("radius","2")
+
+
+
+        // slidewall.setAttribute("scale","3 3 0")
+        // slidewall.setAttribute("geometry","height: 9")
+        // slidewall.setAttribute("geometry","width: 16")
+
+
+
+        // slideplain.setAttribute("position","-30 15 -110")
+        // slideplain.setAttribute("scale","6 6 0")
+        // slideplain.setAttribute("geometry","height: 12")
+        // slideplain.setAttribute("geometry","width: 20")
+
+
+
+
+
+
+
+
+        
+           slidewall.setAttribute("visible", true)
+        //    slideplain.setAttribute("visible", true)
+           slidewall.setAttribute("position","-30 15 -100")
+           slidewall.setAttribute("rotation","0 20 0")
+             slidewall.setAttribute("geometry","height: 9")
+             slidewall.setAttribute("geometry","width: 16")
+                
+             
+             slideplain.setAttribute("position","-30 15 -100")
+                slideplain.setAttribute("rotation","0 20 0")
+                slideplain.setAttribute("scale","6 6 0")
+                  slideplain.setAttribute("geometry","height: 20")
+        slideplain.setAttribute("geometry","width: 25")
+
+
+
+
+        //    slideplain.setAttribute("visible", true)
+
+           portalspheres2.setAttribute("visible", false)
+           text.setAttribute("visible", false)
+        //    guidearrow.setAttribute("visible", true)
+
+
+
+           
+
+
+            }
+
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+AFRAME.registerComponent('arrowclick', {
+
+init: function() {
+
+  const {el} = this
+
+
+  let slideNum=1
+  var slides = document.getElementById('SlideWall')
+
+
+  el.addEventListener('click', () => {
+
+    if (slideNum < 8) {
+
+      slides.setAttribute('material', `src: #Slide${++slideNum}`)
+      console.log("The slide num is",slideNum)
+
+    }
+
+
+  })
+
+},
+
+})
+</script>
+
+
+
+<body style='margin: 0; overflow: hidden; background-color: skyblue;'>
+    <a-scene 
+    id="scene"
+    vr-mode-ui="enabled: false"
+    embedded
+    arjs='sourceType: webcam; debugUIEnabled: false;'
+    loading-screen="dotsColor: white; backgroundColor: skyblue;"
+    >
+        <a-assets>
+            <img id="sky" src="./DeutscheTelecomScreen1.jpeg">
+            <img id="play" src="./ply.png">
+            <img id="pause" src="./pas.png">
+            <img id="arrow" src="./plain.png">
+            <img id="sky2" src="./DeutscheTelecomScreen2.jpeg">
+            <img id="tele" src="./assets/tele.png">
+            <img id="portal" src="./portalimage.png">
+            <img id="sphere" src="./firstscene.png">
+
+
+
+       </a-assets>
+
+<a-text id="text" value="Tap on Sphere" position="-0.2 -0.6 -1" color="#ffc300"  width="1.5" look-controls-enabled="false"></a-text>
+       <a-entity cursor='rayOrigin: mouse; fuse: false' raycaster="objects: .portal">
+        <a-entity
+        class="portal" 
+        clickplane
+        id="teabag"
+        position="0 -0.23 -1"
+        scale="0.2 0.20 0.2"
+        geometry="primitive: sphere; radius: 1;"
+        material="src: #sphere"
+        look-controls-enabled="false"> 
+</a-entity>
+</a-entity> 
+        
+       <a-sky  id="sky1" src="#sky"  rotation="0 -90 0" visible="false"></a-sky>
+       
+
+        <video id="video" src="Connect1.mp4"></video>
+        <a-entity cursor='rayOrigin: mouse; fuse: false' raycaster="objects: .tappable">  
+
+
+            <a-entity class="tappable" clickhandler id="vid" geometry="primitive: plane; height:80; width:130" position="-200 35 -35"
+                rotation="0 90 0" material="src: #video" visible="false"></a-entity>
+                
+                <a-entity class="tappable" clickhandler id="plainvid" geometry="primitive: plane; height:140; width:200" position="-200 35 -35"
+                rotation="0 90 0" material="src: #arrow" visible="false"></a-entity>
+
+            <a-image id="videoControls" class="tappable" clickhandler src="#play" scale="15 15 0" position="-160 30 -30"
+                rotation="0 90 0" visible="false"></a-image>
+            </a-entity> 
+      
+        <a-entity cursor='rayOrigin: mouse; fuse: false' raycaster="objects: .clickarrow" >
+
+
+            <a-image class="clickarrowbtn" arrowhandler src="#arrow" scale="50 90 0" position="-58 -34 -110"
+                rotation="-90 -90 -90" transparent="true"></a-image>
+
+
+                <a-torus id="torus" class="clickarrow" arrowhandler position="-58 -38 -110" rotation="-90 -90 -90" color="#ffe599" radius="20" radius-tubular="1" height="1000" width="2000"
+                animation="property: color;
+           type: color;
+           to: #7f6000;
+           dur: 300;
+           easing: linear;
+           dir: alternate;
+           loop: true
+           "
+           visible="false">
+   
+ 
+            </a-torus>  
+            <a-torus id="torusdisplay" class="clickarrow" arrowhandler position="-58 -38 -110" rotation="-90 -90 -90" color="#ffe599" radius="20" radius-tubular="3" height="1000" width="2000"
+            animation="property: color;
+       type: color;
+       to: #7f6000;
+       dur: 300;
+       easing: linear;
+       dir: alternate;
+       loop: true
+       "
+       visible="false"
+       >
+       </a-torus>
+         <!-- <a-cylinder id="torus" class="clickarrow" arrowhandler position="-58 -19 -100" radius="13" height="10" 
+         material="src: #arrow" transparent="true" visible="false"
+       >
+        </a-cylinder>   -->
+        <!-- <a-ring id="torus" class="clickarrow" arrowhandler position="-58 -38 -110" color="#ffe599" radius-inner="10" radius-outer="20" height="1000" opacity="1.5" rotation="-90 -90 -90"
+        animation="property: color;
+   type: color;
+   to: #7f6000;
+   dur: 300;
+   easing: linear;
+   dir: alternate;
+   loop: true
+   "
+   visible="false"
+   >
+    </a-ring>  -->
+
+        <!-- <a-gltf-model src="./assets/ct-scanner-occlusion-final.glb" scale="10 10 10" position="-58 -38 -110"> -->
+
+        </a-entity>
+
+       
+       
+     <!-- second scene   -->
+       
+     <a-assets>
+     <img id="Slide1" src="./D-1.png">
+     <img id="Slide2" src="./D-2.png">
+     <img id="Slide3" src="./D-3.png">
+     <img id="Slide4" src="./D-4.png">
+     <img id="Slide5" src="./D-5.png"> 
+     <img id="Slide6" src="./D-6.png"> 
+
+     <!-- <img id="arrowguide" src="./assets/arrsecondguide.png">  -->
+
+
+
+     <img id="plain" src="./plain.png">
+     </a-assets>
+       
+     <a-entity   
+        cursor='rayOrigin: mouse; fuse: false'
+       raycaster="objects: .clickslide">
+   
+       
+       <!-- <a-entity class="clickslide" arrowclick id="SlideWall" geometry="primitive: plane; height:9; width:16"
+       scale="3 3 0" position="30 15 -90" rotation="0 0 0" material="src: #Slide1; transparent: true;" visible="false"></a-entity>
+       </a-entity>
+       <a-entity class="clickslide" arrowclick id="SlideWall" geometry="primitive: plane; height:9; width:16"
+       scale="3 3 0" position="-30 15 -110" rotation="0 20 0" material="src: #Slide1; transparent: true;" visible="false"></a-entity>
+       </a-entity> -->
+       <a-entity class="clickslide" arrowclick id="SlideWall" geometry="primitive: plane; height:2; width:2"
+       scale="3 3 0" position="100 15 -4" rotation="0 -90 0" material="src: #Slide1; transparent: true;" visible="false"></a-entity>
+       </a-entity>
+
+       <a-entity class="clickslide" arrowclick id="slideplain" geometry="primitive: plane; height:1; width:1"
+       scale="1 1 0" position="100 15 -4" rotation="0 -90 0" material="src: #Slide1; transparent:true;" visible="false"></a-entity>
+       </a-entity>
+
+       <!-- <a-entity class="clickslide" arrowclick id="slideplain" geometry="primitive: plane; height:15; width:25"
+       scale="6 6 0"  position="30 15 -110" rotation="0 20 0" material="src: #plain; transparent: true;"></a-entity>
+       </a-entity> -->
+       
+      
+       <!-- <a-entity class="clickarrow" arrowclick id="sidearrow" geometry="primitive: plane; height:9; width:16"
+       scale="1 1 0" position="-70 8 -14" rotation="0 90 0" material="src: #plain; transparent: true;" visible="false">
+       </a-entity> -->
+       
+       </a-entity> 
+
+        <a-sound id="backgroundmusic" src="src: url(./01.mp3)" autoplay="true" position="0 2 5" volume="2"></a-sound>
+            <a-camera id="camera1" position="0 0 0" fov="40"></a-camera>
+            <!-- <a-entity camera look-controls fov="40"></a-entity> -->
+
+        </a-scene>
+
+</body>
+
+</html>
